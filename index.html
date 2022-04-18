@@ -6,11 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Phase 1 Project</title>
+    <script defer src="index.js"></script>
   </head>
 
   <body>
-      <input type="text" name="name" >
-    <script defer src="index.js"></script>
+    <div id="website">
+        <h1>Veggie Bot</h1>
+    </div>
+    <div id="favorites">
+        <!-- Add div creation functionality into the event listener and then append here, make scrollable with CSS -->
+    </div>
+    <div id="featured-recipe">
+        <div id="featured-image-container"=>
+            <h2 id="feature-name">Recipe Name Goes Here</h2>
+            <img id="recipe-image" src="">
+        </div>
+        <div id="recipe-container">
+            <h2 id="recipe">Recipe Goes Here</h2>
+            <p>recipe body goes here</p>
+            <!-- make additional p tags as needed -->
+        </div>
+    </div>
+    <div>
+        <form id="search-bar" action="" method="POST">
+ 
+            <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+                 <input type="submit" value="Search Recipe">
+               </form>
+        <button id="random-button">Show me something new</button>
+    </div>    
+    <div>
+
+        <form id="form" action="">
+            <label>Sort Recipe By Category:</label>
+            <select>
+                <option>Pasta</option>
+                <option value=“vegan”>Vegan</option>
+            </select>
+            <input type="submit" name="'" id="submit-button">
+        </form>
+        <div id="filtered-list">
+            <ul>
+                <!-- lis will go here -->
+            </ul>
+        </div>
+    </div> 
+    
   </body>
 
 </html>
