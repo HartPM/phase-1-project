@@ -112,13 +112,22 @@ function randomImage() {
 }
 
 function getOneMeal(recipes) {
-    // console.log(recipes.meals)
     let mealIds = [];
     recipes.meals.forEach(element => {
         mealIds.push(element.idMeal)
-    
     })
-    console.log(mealIds)
+    const randomRecipeId = mealIds[Math.floor(Math.random() * mealIds.length)];
+    fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${randomRecipeId}`)
+    .then(resp => resp.json())
+    .then(recipe => featuredRecipe(recipe))
+}
+
+function featuredRecipe(recipe) {
+    
+    recipeImage.src = recipe.meals[0].strMealThumb
+    featureName.textContent = recipe.meals[0].strMeal
+    recipeName.textContent = recipe.meals[0].strMeal
+    recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
 }
 
 
@@ -131,6 +140,11 @@ function randomRender(e, recipes) {
     .then(recipes => recipes)
 
 }
+
+
+
+
+
 
 randomImage();
 // .forEach(recipe => featuredRecipe(recipe))
