@@ -163,6 +163,29 @@ function renderUserInput(e) {
 // }
 
 
+function filterData(e) {
+    let value = e.target.value
+    console.log(value.replace(`'`, ""))
+    
+    
+    // if (value === 'Vegetarian') {
+    //     console.log(mealNames)
+    // } else if (value === 'Vegan') {
+    //     console.log('I am vegan')
+    // } else {
+    //     console.log('loser')
+    // }
+    
+
+
+
+    // let li = document.createElement('li')
+    // li.textContent = 'dog'
+    // fetch(vegetarianURL)
+
+}
+
+
 
 
 
@@ -174,3 +197,4 @@ randomImage();
 //Event Listeners
 randomBtn.addEventListener('click', randomImage)
 searchBar.addEventListener('submit', renderUserInput)
+dropdownMenu.addEventListener('change', filterData)
