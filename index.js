@@ -100,6 +100,12 @@ let recipeImage = document.querySelector('#recipe-image')
 let recipeName = document.querySelector('#recipe-title')
 let recipeBody = document.querySelector('#recipe-body')
 let randomBtn = document.querySelector('#random-button')
+let searchBar = document.querySelector('#search-bar')
+
+
+//Global Variables
+let mealIds = [];
+let mealNames = [];
 
 
 //Functions
@@ -109,10 +115,11 @@ function randomImage() {
     .then(recipes => {getOneMeal(recipes)
     })  
 }
-let mealIds = [];
+
 function getOneMeal(recipes) {
     recipes.meals.forEach(element => {
         mealIds.push(element.idMeal)
+        mealNames.push(element.strMeal)
     })
     const randomRecipeId = mealIds[Math.floor(Math.random() * mealIds.length)];
     fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${randomRecipeId}`)
@@ -125,6 +132,11 @@ function featuredRecipe(recipe) {
     featureName.textContent = recipe.meals[0].strMeal
     recipeName.textContent = recipe.meals[0].strMeal
     recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
+}
+
+function renderUserInput(e) {
+    e.preventDefault();
+    console.log(e.target['new-task-description'].value)
 }
 
 // function randomRender(e, recipes) {
@@ -147,3 +159,4 @@ randomImage();
 
 //Event Listeners
 randomBtn.addEventListener('click', randomImage)
+searchBar.addEventListener('submit', renderUserInput)
