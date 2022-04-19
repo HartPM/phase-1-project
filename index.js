@@ -6,8 +6,7 @@ const veganURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegan'
 //Fetch
 fetch(vegetarianURL)
     .then(resp => resp.json())
-    .then(recipes => (recipes.meals).forEach(recipe => vegetarianRender(recipe)))
-
+    .then(recipes => (recipes.meals).forEach(recipe => featuredRecipe(recipe)))
 
 fetch(veganURL)
     .then(resp => resp.json())
@@ -67,9 +66,7 @@ function featuredRecipe(recipe) {
     .then(resp => resp.json())
     .then(data => {let instructions = data.meals[0].strInstructions
         renderBody(instructions)
-    })
-
-    
+    })  
 }
 
 function renderBody(instructions) {
@@ -77,8 +74,13 @@ function renderBody(instructions) {
 }
 
 
-
 //Event Listener Callback Functions
 function filterData(e) {
-    //console.log(e.target)
+    console.log(e.target.value)
+    fetch(vegetarian)
 }
+
+const userInput = document.getElementById("new-task-description")
+console.log(userInput)
+
+userInput.addEventListener('input', searchBar)
