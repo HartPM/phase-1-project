@@ -90,6 +90,7 @@
 //URLs
 const vegetarianURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegetarian'
 const veganURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegan'
+const mealNameURL = 'www.themealdb.com/api/json/v1/1/search.php?s='
 
 
 //DOM Selecters
@@ -136,7 +137,20 @@ function featuredRecipe(recipe) {
 
 function renderUserInput(e) {
     e.preventDefault();
-    console.log(e.target['new-task-description'].value)
+    let input = e.target['new-task-description'].value
+    for (recipe of mealNames){
+        recipe.replace(" ", "+")
+        if (recipe.toLowerCase() === input.toLowerCase()) {
+            fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + `${recipe}`)
+            .then(resp => resp.json())
+            .then(mealObj => featuredRecipe(mealObj))
+        } else {
+            // alert('That Recipe Does Not Match')
+        }
+    }
+    searchBar.reset()
+  
+
 }
 
 // function randomRender(e, recipes) {
