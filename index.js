@@ -6,13 +6,14 @@ const veganURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegan'
 //Fetch
 fetch(vegetarianURL)
     .then(resp => resp.json())
-    .then(recipes => (recipes.meals).forEach(recipe => unnamedFunction(recipe)
-))
+    .then(recipes => (recipes.meals).forEach(recipe => vegetarianRender(recipe)))
+
 
 fetch(veganURL)
     .then(resp => resp.json())
-    .then(recipes => (recipes.meals).forEach(recipe => otherFunction(recipe)
-))
+    .then(recipes => recipes.meals)
+
+ //   .forEach(recipe => otherFunction(recipe))
 
 
 //DOM Selecters
@@ -29,9 +30,23 @@ dropdownMenu.addEventListener('change', filterData)
 
 
 //Functions
-function unnamedFunction(recipe) {
-    featuredRecipe(recipe)
+function vegetarianRender(recipe) {
+    let recipeId = recipe.idMeal
+    fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${recipeId}`)
+    .then(resp => resp.json())
+    .then(console.log)
+    // let mealObj = {
+    //     idMeal: data.meals[0].idMeal,
+    //     recipeTitle: data.meals[0].strMeal,
+    //     recipeInstructions: data.meals[0].strInstructions,
+    //     recipeImage: data.meals[0].strMealThumb,
+    //     recipeVideo: data.meals[0].strYoutube,
+    //     recipeRegion: data.meals[0].strArea,
+    //     recipeCategory: data.meals[0].strCategory
+    // }
 }
+    // featuredRecipe(recipe)
+
 
 function otherFunction(recipe) {
     //console.log(recipe)
@@ -51,14 +66,14 @@ function featuredRecipe(recipe) {
     fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${recipe.idMeal}`)
     .then(resp => resp.json())
     .then(data => {let instructions = data.meals[0].strInstructions
-        console.log(instructions)
+        renderBody(instructions)
     })
 
     
 }
 
 function renderBody(instructions) {
-
+    recipeBody.textContent = "Instructions: " + `${instructions}`
 }
 
 
