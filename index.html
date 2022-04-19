@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Phase 1 Project</title>
     <script defer src="index.js"></script>
+    <link rel="stylesheet" href="./style.css">
   </head>
 
   <body>
@@ -17,7 +18,7 @@
         <!-- Add div creation functionality into the event listener and then append here, make scrollable with CSS -->
     </div>
     <div id="featured-recipe">
-        <div id="featured-image-container"=>
+        <div id="featured-image-container">
             <h2 id="feature-name">Recipe Name Goes Here</h2>
             <img id="recipe-image" src="">
         </div>
@@ -36,17 +37,29 @@
         <button id="random-button">Show me something new</button>
     </div>    
     <div>
-
         <form id="form" action="">
             <label>Sort Recipe By Category:</label>
             <select>
-                <option>Pasta</option>
-                <option value=“vegan”>Vegan</option>
+                <optgroup label="By Base">
+                    <option value="noodles">Noodles</option>
+                    <option value=“rice”>Rice</option>
+                    <option value="vegetables">Vegetables</option>  
+                </optgroup>
+                <optgroup label="By Region">
+                    <option value="asian">Asian</option>
+                    <option value=“central-american”>Central American</option>
+                    <option value=“indian”>Indian</option>
+                    <option value=“mediterranean”>Mediterranean</option>
+                </optgroup>
+                <optgroup label="By Dietary Preference">
+                    <option value=“vegetarian”>Vegetarian</option>
+                    <option value=“vegan”>Vegan</option>
+                </optgroup>
             </select>
             <input type="submit" name="'" id="submit-button">
         </form>
         <div id="filtered-list">
-            <ul>
+            <ul id="recipes">
                 <!-- lis will go here -->
             </ul>
         </div>
