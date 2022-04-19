@@ -107,12 +107,10 @@ function randomImage() {
     fetch(vegetarianURL)
     .then(resp => resp.json())
     .then(recipes => {getOneMeal(recipes)
-    randomRender(recipes)
     })  
 }
-
+let mealIds = [];
 function getOneMeal(recipes) {
-    let mealIds = [];
     recipes.meals.forEach(element => {
         mealIds.push(element.idMeal)
     })
@@ -122,24 +120,21 @@ function getOneMeal(recipes) {
     .then(recipe => featuredRecipe(recipe))
 }
 
-function featuredRecipe(recipe) {
-    
+function featuredRecipe(recipe) { 
     recipeImage.src = recipe.meals[0].strMealThumb
     featureName.textContent = recipe.meals[0].strMeal
     recipeName.textContent = recipe.meals[0].strMeal
     recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
 }
 
-
-function randomRender(e, recipes) {
-    console.log('one meal: ' + recipes)
-    let mealId = [];
-    //Get One Random ID From mealId Array
-    fetch(vegetarianURL)
-    .then(resp => resp.json())
-    .then(recipes => recipes)
-
-}
+// function randomRender(e, recipes) {
+//     console.log('one meal: ' + recipes)
+//     let mealId = [];
+//     //Get One Random ID From mealId Array
+//     fetch(vegetarianURL)
+//     .then(resp => resp.json())
+//     .then(recipes => recipes)
+// }
 
 
 
@@ -151,4 +146,4 @@ randomImage();
 
 
 //Event Listeners
-randomBtn.addEventListener('click', randomRender)
+randomBtn.addEventListener('click', randomImage)
