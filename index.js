@@ -102,6 +102,9 @@ let recipeName = document.querySelector('#recipe-title')
 let recipeBody = document.querySelector('#recipe-body')
 let randomBtn = document.querySelector('#random-button')
 let searchBar = document.querySelector('#search-bar')
+let favoriteBtn = document.querySelector('.favorite-button')
+let myFavorites = document.querySelector('.hidden')
+let myFavoriteImageContainer = document.querySelector('#favorite-image-container')
 
 
 //Global Variables
@@ -125,6 +128,7 @@ function getOneMeal(recipes) {
     recipes.meals.forEach(element => {
         mealIds.push(element.idMeal)
         mealNames.push(element.strMeal)
+
     })
     const randomRecipeId = mealIds[Math.floor(Math.random() * mealIds.length)];
     fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${randomRecipeId}`)
@@ -164,6 +168,27 @@ function renderUserInput(e) {
 //     .then(recipes => recipes)
 // }
 
+function getGeography(obj) {
+    // console.log(obj)
+    // arr.forEach(element => {
+    // console.log(element)
+    
+    
+    // fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${element}`)
+    // .then(resp => resp.json())
+    // .then(console.log)
+        
+    //     mealIds.push(element.idMeal)
+    //     mealNames.push(element.strMeal)
+    // })
+}
+
+
+// let array = [1,2,3,4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]
+// console.log(array)
+// getGeography(array)
+getGeography(mealIds)
+// console.log(typeof mealIds)
 
 function filterData(e) {
     let value = e.target.value
@@ -186,12 +211,14 @@ function filterData(e) {
     }
 
     if (value === "american") {
+        pullRecipes(american)
         fetch(vegetarianURL)
         .then(resp => resp.json())
         .then(recipes => (recipes.meals).forEach(recipe => {
             appendRecipe(recipe)
         }))
     } else if (value === "east-asian") {
+        pullRecipes(eastAsian)
         console.log('I am east asian')
     } else if (value === "european") {
         console.log(value)
@@ -210,6 +237,41 @@ function appendRecipe(recipe){
     let newLi = document.createElement('li')
     newLi.textContent = recipe.strMeal
     recipesUl.appendChild(newLi)
+    newLi.addEventListener('click', clickRender)
+}
+
+function clickRender(e) {
+    let userPointer = e.target.textContent
+    userPointer.replace(" ", "+")
+    // let color = e.target.style.color
+    
+    // console.log(color)
+    // if (color === 'red') {
+    //     color = 'black'
+    // } else if (color === 'black') {
+    //     color = 'red'
+    // }
+    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + `${userPointer}`)
+    .then(resp => resp.json())
+    .then(recipeObj => featuredRecipe(recipeObj))
+}
+
+function appendFavorites(e) {
+    myFavorites.style.visibility = 'visible'
+    let newImage = document.createElement('img')
+    newImage.addEventListener('click', displayFavorite)
+    newImage.src = recipeImage.src
+    newImage.title = featureName.textContent
+    newImage.recipe = recipeBody.textContent
+    myFavoriteImageContainer.append(newImage)
+}
+
+function displayFavorite(e) {
+    console.log(e.target)
+    recipeImage.src = e.target.src
+    recipeName.textContent = e.target.title
+    recipeBody.textContent = e.target.recipe
+
 }
 
 randomImage();
@@ -220,3 +282,4 @@ randomImage();
 randomBtn.addEventListener('click', randomImage)
 searchBar.addEventListener('submit', renderUserInput)
 dropdownMenu.addEventListener('change', filterData)
+favoriteBtn.addEventListener('click', appendFavorites)
