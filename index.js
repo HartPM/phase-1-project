@@ -138,7 +138,7 @@ function getOneMeal(recipes) {
 
 function featuredRecipe(recipe) { 
     recipeImage.src = recipe.meals[0].strMealThumb
-    featureName.textContent = recipe.meals[0].strMeal
+    // featureName.textContent = recipe.meals[0].strMeal
     recipeName.textContent = recipe.meals[0].strMeal
     recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
 }
@@ -261,7 +261,7 @@ function appendFavorites(e) {
     let newImage = document.createElement('img')
     newImage.addEventListener('click', displayFavorite)
     newImage.src = recipeImage.src
-    newImage.title = featureName.textContent
+    newImage.title = recipeName.textContent
     newImage.recipe = recipeBody.textContent
     myFavoriteImageContainer.append(newImage)
 }
