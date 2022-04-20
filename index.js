@@ -168,8 +168,22 @@ function renderUserInput(e) {
 //     .then(recipes => recipes)
 // }
 
-function getGeography(obj) {
-    // console.log(obj)
+function getGeography() {
+    const arrayLike = {
+        0: 'Value 0',
+        1: 'Value 1',
+      };
+    
+    const realArray = Array.from(arrayLike)
+    console.log(realArray)
+    
+    
+    // let newArray = Array.from(obj)
+    
+    // console.log(newArray)
+    // for(let i = 0; i > obj.length; i++){
+    //     console.log(obj)
+    // }
     // arr.forEach(element => {
     // console.log(element)
     
@@ -187,7 +201,7 @@ function getGeography(obj) {
 // let array = [1,2,3,4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]
 // console.log(array)
 // getGeography(array)
-getGeography(mealIds)
+getGeography()
 // console.log(typeof mealIds)
 
 function filterData(e) {
@@ -208,29 +222,33 @@ function filterData(e) {
         .then(recipes => (recipes.meals).forEach(recipe => {
             appendRecipe(recipe)
         }))
-    }
-
-    if (value === "american") {
-        pullRecipes(american)
-        fetch(vegetarianURL)
-        .then(resp => resp.json())
-        .then(recipes => (recipes.meals).forEach(recipe => {
-            appendRecipe(recipe)
-        }))
+    } else if (value === "american") {
+        let americanArray = [52816, 52817, 52870, 52794]
+        pullRecipes(americanArray)
     } else if (value === "east-asian") {
-        pullRecipes(eastAsian)
-        console.log('I am east asian')
+        let eastasianArray = [52955, 52871]
+        pullRecipes(eastasianArray)
     } else if (value === "european") {
-        console.log(value)
+        let europeanArray = [52906, 52864, 52921, 52908, 52784, 52911, 52863, 52867, 52775]
+        pullRecipes(europeanArray)
     } else if (value === "indian") {
-        console.log(value)
+        let indianArray = [52807, 52785, 52868, 52865]
+        pullRecipes(indianArray)
     } else if (value === "mediterranean") {
-        console.log(value)
+        let mediterraneanArray = [53012, 52811, 52872, 52771, 52849, 52866, 52942]
+        pullRecipes(mediterraneanArray)
     } else if (value === "north-african") {
-        console.log(value)
-    } else {
-        console.log(value)
+        let northafricanArray = [53025, 52971, 53027, 52973, 53047, 52963, 52797, 52869, 53026]
+        pullRecipes(northafricanArray)
     }
+}
+
+function pullRecipes(arr) {
+    arr.forEach(recipe => {
+    fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + `${recipe}`)
+    .then(resp => resp.json())
+    .then(recipe => appendRecipe(recipe.meals[0]))
+    })
 }
 
 function appendRecipe(recipe){
