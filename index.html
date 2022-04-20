@@ -14,15 +14,17 @@
     <div id="website">
         <h1>Veggie Bot</h1>
     </div>
-    <div id="favorites">
-        <!-- Add div creation functionality into the event listener and then append here, make scrollable with CSS -->
-    </div>
+    <div id="favorites" class="hidden">
+        <h2>My Favorite Recipes</h2> 
+   <!-- Add div creation functionality into the event listener and then append here, make scrollable with CSS -->
+   </div>
     <div id="featured-recipe">
-        <div id="featured-image-container">
+        <div id="featured-image-container" class="column">
             <h2 id="feature-name">Recipe Name Goes Here</h2>
+            <h3 class="favorite-button">Favorite &#x2661;</h3> 
             <img id="recipe-image" src="">
         </div>
-        <div id="recipe-container">
+        <div id="recipe-container" class="column">
             <h2 id="recipe-title">Recipe Goes Here</h2>
             <p id="recipe-body">recipe body goes here</p>
             <!-- make additional p tags as needed -->
