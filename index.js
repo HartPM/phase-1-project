@@ -165,16 +165,30 @@ function renderUserInput(e) {
 
 function filterData(e) {
     let value = e.target.value
-    console.log(value.replace(`'`, ""))
-    
-    
-    // if (value === 'Vegetarian') {
-    //     console.log(mealNames)
-    // } else if (value === 'Vegan') {
-    //     console.log('I am vegan')
-    // } else {
-    //     console.log('loser')
-    // }
+    while (recipesUl.firstChild) {
+        recipesUl.removeChild(recipesUl.firstChild);
+    }
+    if (value === "vegetarian") {
+        fetch(vegetarianURL)
+        .then(resp => resp.json())
+        .then(recipes => (recipes.meals).forEach(recipe => {
+            appendRecipe(recipe)
+        }
+        ))
+    } else if (value === "vegan") {
+        fetch(veganURL)
+        .then(resp => resp.json())
+        .then(recipes => (recipes.meals).forEach(recipe => {
+            appendRecipe(recipe)
+        }
+        ))
+    }
+
+    function appendRecipe(recipe){
+        let newLi = document.createElement('li')
+        newLi.textContent = recipe.strMeal
+        recipesUl.appendChild(newLi)
+    }
     
 
 
