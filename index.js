@@ -153,8 +153,6 @@ function renderUserInput(e) {
         }
     }
     searchBar.reset()
-  
-
 }
 
 // function randomRender(e, recipes) {
@@ -184,29 +182,35 @@ function filterData(e) {
         .then(resp => resp.json())
         .then(recipes => (recipes.meals).forEach(recipe => {
             appendRecipe(recipe)
-        }
-        ))
+        }))
     }
 
-    function appendRecipe(recipe){
-        let newLi = document.createElement('li')
-        newLi.textContent = recipe.strMeal
-        recipesUl.appendChild(newLi)
+    if (value === "american") {
+        fetch(vegetarianURL)
+        .then(resp => resp.json())
+        .then(recipes => (recipes.meals).forEach(recipe => {
+            appendRecipe(recipe)
+        }))
+    } else if (value === "east-asian") {
+        console.log('I am east asian')
+    } else if (value === "european") {
+        console.log(value)
+    } else if (value === "indian") {
+        console.log(value)
+    } else if (value === "mediterranean") {
+        console.log(value)
+    } else if (value === "north-african") {
+        console.log(value)
+    } else {
+        console.log(value)
     }
-    
-
-
-
-    // let li = document.createElement('li')
-    // li.textContent = 'dog'
-    // fetch(vegetarianURL)
-
 }
 
-
-
-
-
+function appendRecipe(recipe){
+    let newLi = document.createElement('li')
+    newLi.textContent = recipe.strMeal
+    recipesUl.appendChild(newLi)
+}
 
 randomImage();
 // .forEach(recipe => featuredRecipe(recipe))
