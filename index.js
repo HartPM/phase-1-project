@@ -114,7 +114,11 @@ function randomImage() {
     fetch(vegetarianURL)
     .then(resp => resp.json())
     .then(recipes => {getOneMeal(recipes)
-    })  
+    })
+    fetch(veganURL)
+    .then(resp => resp.json())
+    .then(recipes => {getOneMeal(recipes)
+    })
 }
 
 function getOneMeal(recipes) {
