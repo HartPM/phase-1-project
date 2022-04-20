@@ -19,7 +19,32 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
 }
 
-/* .column {
-    float: left;
+  /* #featured-recipe {
+    display: inline-block;
     width: 50%;
   } */
+  
+  
+  .column {
+    width: 50%;
+    float: left;
+  }
+
+  /* #featured-image-container {
+    float: left;
+  } */
+
+  /* #recipe-container {
+    float: left;
+    height: 100%;
+  } */
+
+  #recipe-image {
+    max-width: 400px;
+    max-height: auto;
+  }
+
+  #clickable-functionality {
+      display: block;
+  }
+

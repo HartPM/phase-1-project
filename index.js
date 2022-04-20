@@ -24,6 +24,8 @@ let mealNames = [];
 
 
 //Functions
+
+//Generates Random Images For Vegetarian An
 function randomImage() {
     fetch(vegetarianURL)
     .then(resp => resp.json())
@@ -207,7 +209,7 @@ function displayFavorite(e) {
 }
 
 randomImage();
-// .forEach(recipe => featuredRecipe(recipe))
+
 
 
 //Event Listeners

@@ -12,7 +12,8 @@
 
   <body>
     <div id="website">
-        <h1>Veggie Bot</h1>
+        <h1>Global Greens</h1>
+        <h3>delicious vegetarian/vegan food from around the globe</h3>
     </div>
     <div id="favorites" class="hidden">
         <h2>My Favorite Recipes</h2> 
@@ -32,38 +33,39 @@
             <!-- make additional p tags as needed -->
         </div>
     </div>
-    <div>
-        <form id="search-bar" action="" method="POST">
-            <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
-            <input type="submit" value="Search Recipe">
-        </form>
-        <button id="random-button">Show me something new</button>
-    </div>    
-    <div>
-        <form id="form" action="">
-            <label>Sort Recipe By Category:</label>
-            <select>
-                <optgroup label="By Region:">
-                    <option value="american">American</option>
-                    <option value="east-asian">East Asian</option>
-                    <option value="european">European</option>
-                    <option value="indian">Indian</option>
-                    <option value="mediterranean">Mediterranean</option>
-                    <option value="north-african">North African</option>
-                </optgroup>
-                <optgroup label="By Dietary Preference:">
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                </optgroup>
-            </select>
-        </form>
-        <div id="filtered-list">
-            <ul id="recipes">
-                <!-- lis will go here -->
-            </ul>
-        </div>
-    </div> 
-    
+    <div id="clickable-functionality"> 
+        <div>
+            <form id="search-bar" action="" method="POST">
+                <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+                <input type="submit" value="Search Recipe">
+            </form>
+            <button id="random-button">Show me something new</button>
+        </div>  
+        <div>
+            <form id="form" action="">
+                <label>Sort Recipe By Category:</label>
+                <select>
+                    <optgroup label="By Region:">
+                        <option value="american">American</option>
+                        <option value="east-asian">East Asian</option>
+                        <option value="european">European</option>
+                        <option value="indian">Indian</option>
+                        <option value="mediterranean">Mediterranean</option>
+                        <option value="north-african">North African</option>
+                    </optgroup>
+                    <optgroup label="By Dietary Preference:">
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </optgroup>
+                </select>
+            </form>
+            <div id="filtered-list">
+                <ul id="recipes">
+                    <!-- lis will go here -->
+                </ul>
+            </div>
+        </div> 
+    </div>
   </body>
 
 </html>
