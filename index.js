@@ -169,7 +169,7 @@ function renderUserInput(e) {
 // }
 
 function getGeography(obj) {
-    // console.log(obj)
+    console.log(obj)
     // arr.forEach(element => {
     // console.log(element)
     
@@ -182,7 +182,6 @@ function getGeography(obj) {
     //     mealNames.push(element.strMeal)
     // })
 }
-
 
 // let array = [1,2,3,4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]
 // console.log(array)
