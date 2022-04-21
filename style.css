@@ -57,6 +57,7 @@ input {
 
 .hidden {
     visibility: hidden;
+    height: 0px;
 }
   /* creates a column format for recipe picture and recipe card */
 .column {
@@ -177,4 +178,8 @@ input {
     transform: scale(1.3);
     cursor: pointer;
   }
+
+#add-recipe-form {
+    padding-bottom: 90px;
+}
 
