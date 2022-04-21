@@ -176,13 +176,13 @@ function clickRender(e) {
     userPointer.replace(" ", "+")
     e.target.style.color = 'black'
     if (e.target.style.color === 'black') {
-        e.target.style.color = 'red'
+        e.target.style.color = 'green'
     } 
 
-    if (e.target.style.color === 'red') {
+    if (e.target.style.color === 'green') {
         setTimeout(function() {
             e.target.style.color = "black";
-          }, 1000);
+          }, 800);
     }
 
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + `${userPointer}`)

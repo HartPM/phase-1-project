@@ -13,14 +13,47 @@
   <body>
     <div id="website">
         <h1>Global Greens</h1>
-        <h3>delicious vegetarian/vegan food from around the globe</h3>
+        <h5>. . . delicious vegetarian & vegan food from around the globe</h5>
     </div>
-    <div id="favorites" class="hidden">
+    <!-- <div id="favorites" class="hidden">
         <h2>My Favorite Recipes</h2> 
         <div id="favorite-image-container">
 
         </div>
-   </div>
+   </div> -->
+
+   <div id="clickable-functionality"> 
+    <form id="search-bar" action="" method="POST">
+        <input type="text" id="new-task-description" name="new-task-description" placeholder="Recipe Name">
+        <input type="submit" value="Search" style="background-color: green; color: white;">
+    </form>
+    <button id="random-button">Show me something new</button>
+<div id="sort-by-category">
+    <form id="form" action="">
+        <label>Sort Recipe By Category:</label>
+        <select>
+            <optgroup label="By Region:">
+                <option value="american">American</option>
+                <option value="east-asian">East Asian</option>
+                <option value="european">European</option>
+                <option value="indian">Indian</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="north-african">North African</option>
+            </optgroup>
+            <optgroup label="By Dietary Preference:">
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+            </optgroup>
+        </select>
+    </form>
+    <div id="filtered-list">
+        <ul id="recipes">
+            <!-- lis will go here -->
+        </ul>
+    </div>
+</div> 
+</div>
+
     <div id="featured-recipe">
         <div id="featured-image-container" class="column">
             <!-- <h2 id="feature-name">Recipe Name Goes Here</h2> -->
@@ -33,15 +66,13 @@
             <!-- make additional p tags as needed -->
         </div>
     </div>
-    <div id="clickable-functionality"> 
-        <div>
+    <!-- <div id="clickable-functionality"> 
             <form id="search-bar" action="" method="POST">
                 <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
                 <input type="submit" value="Search Recipe">
             </form>
             <button id="random-button">Show me something new</button>
-        </div>  
-        <div>
+        <div id="sort-by-category">
             <form id="form" action="">
                 <label>Sort Recipe By Category:</label>
                 <select>
@@ -65,7 +96,14 @@
                 </ul>
             </div>
         </div> 
-    </div>
+    </div> -->
+
+    <div id="favorites" class="hidden">
+        <h2>My Favorite Recipes</h2> 
+        <div id="favorite-image-container">
+
+        </div>
+   </div>
   </body>
 
 </html>
