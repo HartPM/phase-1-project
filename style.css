@@ -3,48 +3,112 @@ body {
     background-color: #cff0b1;
 }
 
+h1 {
+    margin: 0px;
+    margin-top: 20px;
+    font-size: 90px;
+    font-family: Copperplate Gothic Light;
+    font-style: italic;
+    color: forestgreen;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+h5 {
+    margin-top: 0px;
+    font-style: oblique;
+    text-align: right;
+    padding-right: 400px;
+    font-family: Copperplate;
+}
+
+li {
+    list-style: none;
+    font-style: italic;
+    font-size: 20px;
+}
+
 .hidden {
     visibility: hidden;
-  }
+}
+  /* creates a column format for recipe picture and recipe card */
+.column {
+    width: 50%;
+    float: left;
+}
+
+.favorite-button {
+    position: absolute;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    top: 10px;
+    left: 130px;
+    width: 100px;
+    /* left: 250px;
+    top: 40px;
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+    background-color:  */
+}
+
+.favorite-button:hover {
+    background-color: pink;
+}
 
 #featured-recipe {
     position: relative;
 }
-  
-.favorite-button {
-    position: absolute;
-    left: 250px;
-    top: 40px;
-    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
-    background-color: rgba(255, 255, 255, 0.7);
+
+#featured-image-container{
+    position: relative;
+    width: 50%;
 }
 
-  /* #featured-recipe {
-    display: inline-block;
-    width: 50%;
-  } */
-  
-  
-  .column {
-    width: 50%;
-    float: left;
-  }
+#featured-recipe:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
-  /* #featured-image-container {
-    float: left;
-  } */
+#recipe-container {
+      background-color: azure;
+}
 
-  /* #recipe-container {
-    float: left;
-    height: 100%;
-  } */
+#recipe-body {
+      padding: 50px;
+      padding-top: 20px;
+      text-align: left;
+      font-style: italic;
+}
 
-  #recipe-image {
-    max-width: 400px;
-    max-height: auto;
-  }
+#recipe-image {
+    max-width: 100%;
+}
 
-  #clickable-functionality {
-      display: block;
-  }
+#random-button {
+    background-color: forestgreen; color: white;
+}
 
+#clickable-functionality {
+      padding-top: 25px;
+}
+
+#search-bar {
+      padding-bottom: 30px;
+}
+
+#sort-by-category {
+     padding-top: 30px;
+     padding-bottom: 30px;
+     font-weight: bold;
+     font-size: 25px;
+}
+
+#favorite-image-container{
+    transform: scale(0.3);
+}
+
+#favorites {
+    padding: 0px;
+    margin: 0px;
+}
