@@ -25,36 +25,43 @@ let mealNames = [];
 
 //Functions
 
-//Generates Random Images For Vegetarian An
-function randomImage() {
-    fetch(vegetarianURL)
-    .then(resp => resp.json())
-    .then(recipes => {getOneMeal(recipes)
-    })
-    fetch(veganURL)
-    .then(resp => resp.json())
-    .then(recipes => {getOneMeal(recipes)
-    })
+// Recycled Functions
+function featuredRecipe(recipe) { 
+    recipeImage.src = recipe.meals[0].strMealThumb
+    recipeName.textContent = recipe.meals[0].strMeal
+    recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
 }
 
+function randomImage() {
+    fetch(vegetarianURL)
+        .then(resp => resp.json())
+        .then(recipes => {getOneMeal(recipes)
+        })
+    fetch(veganURL)
+        .then(resp => resp.json())
+        .then(recipes => {getOneMeal(recipes)
+        })
+}
+
+randomImage();
+
+
+//Generates Random Images
 function getOneMeal(recipes) {
     recipes.meals.forEach(element => {
         mealIds.push(element.idMeal)
         mealNames.push(element.strMeal)
-
     })
     const randomRecipeId = mealIds[Math.floor(Math.random() * mealIds.length)];
     fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${randomRecipeId}`)
-    .then(resp => resp.json())
-    .then(recipe => featuredRecipe(recipe))
+        .then(resp => resp.json())
+        .then(recipe => featuredRecipe(recipe))
 }
 
-function featuredRecipe(recipe) { 
-    recipeImage.src = recipe.meals[0].strMealThumb
-    // featureName.textContent = recipe.meals[0].strMeal
-    recipeName.textContent = recipe.meals[0].strMeal
-    recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
-}
+
+
+// Search Bar
+searchBar.addEventListener('submit', renderUserInput)
 
 function renderUserInput(e) {
     e.preventDefault();
@@ -63,8 +70,8 @@ function renderUserInput(e) {
         recipe.replace(" ", "+")
         if (recipe.toLowerCase() === input.toLowerCase()) {
             fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + `${recipe}`)
-            .then(resp => resp.json())
-            .then(mealObj => featuredRecipe(mealObj))
+                .then(resp => resp.json())
+                .then(mealObj => featuredRecipe(mealObj))
         } else {
             // alert('That Recipe Does Not Match')
         }
@@ -72,51 +79,10 @@ function renderUserInput(e) {
     searchBar.reset()
 }
 
-// function randomRender(e, recipes) {
-//     console.log('one meal: ' + recipes)
-//     let mealId = [];
-//     //Get One Random ID From mealId Array
-//     fetch(vegetarianURL)
-//     .then(resp => resp.json())
-//     .then(recipes => recipes)
-// }
 
-function getGeography() {
-    const arrayLike = {
-        0: 'Value 0',
-        1: 'Value 1',
-      };
-    
-    const realArray = Array.from(arrayLike)
-    console.log(realArray)
-    
-    
-    // let newArray = Array.from(obj)
-    
-    // console.log(newArray)
-    // for(let i = 0; i > obj.length; i++){
-    //     console.log(obj)
-    // }
-    // arr.forEach(element => {
-    // console.log(element)
-    
-    
-    // fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + `${element}`)
-    // .then(resp => resp.json())
-    // .then(console.log)
-        
-    //     mealIds.push(element.idMeal)
-    //     mealNames.push(element.strMeal)
-    // })
-}
+// Show Me Something New Button
 
-
-// let array = [1,2,3,4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]
-// console.log(array)
-// getGeography(array)
-getGeography()
-// console.log(typeof mealIds)
-
+// Dropdown Filter
 function filterData(e) {
     let value = e.target.value
     while (recipesUl.firstChild) {
@@ -124,10 +90,10 @@ function filterData(e) {
     }
     if (value === "vegetarian") {
         fetch(vegetarianURL)
-        .then(resp => resp.json())
-        .then(recipes => (recipes.meals).forEach(recipe => {
+            .then(resp => resp.json())
+            .then(recipes => (recipes.meals).forEach(recipe => {
             appendRecipe(recipe)
-        }
+            }
         ))
     } else if (value === "vegan") {
         fetch(veganURL)
@@ -159,9 +125,9 @@ function filterData(e) {
 function pullRecipes(arr) {
     arr.forEach(recipe => {
     fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + `${recipe}`)
-    .then(resp => resp.json())
-    .then(recipe => appendRecipe(recipe.meals[0]))
-    })
+        .then(resp => resp.json())
+        .then(recipe => appendRecipe(recipe.meals[0]))
+        })
 }
 
 function appendRecipe(recipe){
@@ -177,19 +143,17 @@ function clickRender(e) {
     e.target.style.color = 'black'
     if (e.target.style.color === 'black') {
         e.target.style.color = 'green'
-    } 
-
+    }    
     if (e.target.style.color === 'green') {
         setTimeout(function() {
             e.target.style.color = "black";
           }, 800);
     }
-
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + `${userPointer}`)
-    .then(resp => resp.json())
-    .then(recipeObj => featuredRecipe(recipeObj))
+        .then(resp => resp.json())
+        .then(recipeObj => featuredRecipe(recipeObj))
 }
-
+// Favorite Button
 function appendFavorites(e) {
     myFavorites.style.visibility = 'visible'
     let newImage = document.createElement('img')
@@ -201,20 +165,16 @@ function appendFavorites(e) {
     myFavoriteImageContainer.append(newImage)
 }
 
+
 function displayFavorite(e) {
-    console.log(e.target)
     recipeImage.src = e.target.src
     recipeName.textContent = e.target.title
     recipeBody.textContent = e.target.recipe
 
 }
 
-randomImage();
-
-
 
 //Event Listeners
 randomBtn.addEventListener('click', randomImage)
-searchBar.addEventListener('submit', renderUserInput)
 dropdownMenu.addEventListener('change', filterData)
 favoriteBtn.addEventListener('click', appendFavorites)
