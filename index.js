@@ -16,6 +16,7 @@ let searchBar = document.querySelector('#search-bar')
 let favoriteBtn = document.querySelector('.favorite-button')
 let myFavorites = document.querySelector('.hidden')
 let myFavoriteImageContainer = document.querySelector('#favorite-image-container')
+let addRecipeForm = document.querySelector('#add-recipe-form')
 
 
 //Global Variables
@@ -173,8 +174,43 @@ function displayFavorite(e) {
 
 }
 
+//Add Recipe POST Request
+function newRecipe(obj) {
+    fetch('http://localhost:3000/posts', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj)
+    })
+        .then(resp => resp.json())
+        .then(recipe => featuredRecipe(recipe))
+}
+
+function createRecipe(e) {
+    e.preventDefault()
+    let newRecipeObj = {
+        meals: [{
+            strMeal: e.target['recipe-name'].value,
+            strInstructions: e.target['recipe-instructions'].value,
+            strMealThumb: e.target['new-recipe-image'].value
+        
+        }]
+    }
+
+    newRecipe(newRecipeObj)
+}
+
+function newRecipe(recipe) { 
+    recipeImage.src = recipe.meals[0].strMealThumb
+    recipeName.textContent = recipe.meals[0].strMeal
+    recipeBody.textContent = "Instructions: " + recipe.meals[0].strInstructions
+}
+
 
 //Event Listeners
 randomBtn.addEventListener('click', randomImage)
 dropdownMenu.addEventListener('change', filterData)
 favoriteBtn.addEventListener('click', appendFavorites)
+addRecipeForm.addEventListener('submit', createRecipe)
