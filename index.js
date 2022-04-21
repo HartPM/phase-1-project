@@ -156,7 +156,9 @@ function clickRender(e) {
 }
 // Favorite Button
 function appendFavorites(e) {
+    // const favoritesId = document.getElementById
     myFavorites.style.visibility = 'visible'
+    myFavorites.style.height = '400px'
     let newImage = document.createElement('img')
     newImage.addEventListener('click', displayFavorite)
     newImage.src = recipeImage.src
@@ -164,6 +166,7 @@ function appendFavorites(e) {
     newImage.recipe = recipeBody.textContent
     newImage.setAttribute('class', 'picture')
     myFavoriteImageContainer.append(newImage)
+    
 }
 
 
@@ -195,11 +198,12 @@ function createRecipe(e) {
             strMeal: e.target['recipe-name'].value,
             strInstructions: e.target['recipe-instructions'].value,
             strMealThumb: e.target['new-recipe-image'].value
-        
         }]
     }
 
     newRecipe(newRecipeObj)
+
+    e.target.reset()
 }
 
 function newRecipe(recipe) { 
