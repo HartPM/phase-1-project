@@ -197,6 +197,7 @@ function appendFavorites(e) {
     newImage.src = recipeImage.src
     newImage.title = recipeName.textContent
     newImage.recipe = recipeBody.textContent
+    newImage.setAttribute('class', 'picture')
     myFavoriteImageContainer.append(newImage)
 }
 
