@@ -36,8 +36,16 @@ li {
 }
 
 p {
-    max-height: 400px;
+    height: 400px;
     overflow: auto;
+}
+
+select {
+    cursor: pointer;
+}
+
+input {
+    cursor: pointer;
 }
 
 .myfavrecipes {
@@ -127,6 +135,7 @@ p {
 #random-button {
     background-color: #A6BF8E; color: white;
     border-radius: 5px;
+    cursor: pointer;
     /* box-shadow: 1.6px 1.6px #4D5942; */
 }
 
@@ -140,6 +149,7 @@ p {
 
 #search-bar {
       padding-bottom: 30px;
+      /* cursor: pointer; */
 }
 
 #sort-by-category {
@@ -164,6 +174,7 @@ p {
   }
   
 #favorite-image-container img:hover {
-    transform: scale(1.3)
+    transform: scale(1.3);
+    cursor: pointer;
   }
 
